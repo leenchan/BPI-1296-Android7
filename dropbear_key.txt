@@ -1,0 +1,12 @@
+# From https://bbs.archlinux.org/viewtopic.php?id=250512
+
+dropbear should understand RSA, ECDSA, and DSS
+https://jlk.fjfi.cvut.cz/arch/manpages/ … arkey.1.en
+
+Edit: But apparently you need to first convert a key from RFC4716 to PEM to get the conversion working.
+https://bugs.archlinux.org/task/60523
+https://github.com/random-archer/mkinit … /issues/17
+
+ssh-keygen -m PEM -p -f /tmp/id
+# or create new key: ssh-keygen -t rsa -m PEM -f /tmp/id
+dropbearconvert openssh dropbear /tmp/id /tmp/id_drop
